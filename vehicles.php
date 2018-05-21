@@ -25,11 +25,14 @@ class vehicle {
     return $cars;
   }
 
-  function editVehicle(){}
+  function editVehicle($vehicleId,$field,$newdata){
+    $sql = "UPDATE vehicles SET ".$field."=".$newdata." WHERE id=".$vehicleId;
+    return mysqli_affected_rows(mysqli_query($connect, $sql));
+  }
 
   function removeCar($id){
     $query = "DELETE FROM vehicles WHERE id='".$id"'"
-    $deleteCar = mysqli_query($connect,$query;
+    $deleteCar = mysqli_query($connect,$query);
     if ($deleteCar){
       return 'Vehicle data successfully deleted';
     }
