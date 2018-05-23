@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lexa Rentals</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="home.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <!-- top navbar -->
+  <div class="container-fluid navbar navbar-inverse">
+    <a href="#" class="navbar-brand">LOGO</a>
+    <div class="navbar-right">
+      <a onclick="document.getElementById('loginModal').style.display='block'">Log out</a>
+    </div>
+  </div>
+  <div class="container-fluid" id="banner">
+    BANNER
+  </div>
+  <div class="container-fluid" role="navigation" id="navtabs">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+      <li class="active"><a data-toggle="tab" href="#homeTab"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> BROWSE CARS</a></li>
+      <li role="presentation"><a data-toggle="tab" href="#bookingHist"><span class="glyphicon glyphicon-phone" aria-hidden="true"></span> BOOKING HISTORY</a></li>
+      <li role="presentation"><a data-toggle="tab" href="#checkBTab"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> CHECK BOOKING STATUS</a></li>
+    </ul>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="homeTab">
+      <div class="col-sm-3" id="sidenav"> SIDENAV</div>
+      <div class="col-sm-9" id="browse_cars">
+        <div class="row">
+          <div class="column">
+            <img src="" alt="Fjords" style="width:100%">
+          </div>
+          <div class="column">
+            <img src="" alt="Forest" style="width:100%">
+          </div>
+          <div class="column">
+            <img src="" alt="Mountains" style="width:100%">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="bookingHist">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th>Booking Ref</th>
+            <th>Date</th>
+            <th>Vehicle</th>
+            <th>Quantity</th>
+            <th>Amount</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </div>
+  <!--
+  <script>
+  var tab1 = document.getElementById('homeTab');
+  var tab2 = document.getElementById('bookingsTab');
+  var tab3 = document.getElementById('checkBTab');
+
+  tab1.onclick()= function(){
+    tab2.style.display="none";
+    tab3.style.display='none';
+    tab1.style.display='block';
+  }
+  tab2.onclick()= function(){
+    tab1.style.display="none";
+    tab3.style.display='none';
+    tab2.style.display='block';
+  }
+  tab3.onclick()= function(){
+    tab2.style.display="none";
+    tab1.style.display='none';
+    tab3.style.display='block';
+  }
+  tab
+</script> -->

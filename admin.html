@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Lexa Rentals</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="home.css">
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</head>
+<body>
+  <!-- top navbar -->
+  <div class="container-fluid navbar navbar-inverse">
+    <a href="#" class="navbar-brand">LOGO</a>
+    <div class="navbar-right">
+      <a onclick="document.getElementById('loginModal').style.display='block'">Log out</a>
+    </div>
+  </div>
+  <div class="container-fluid" id="banner">
+    BANNER
+  </div>
+  <div class="container-fluid" role="navigation" id="navtabs">
+    <ul class="nav nav-tabs nav-justified">
+      <li class="active"><a data-toggle='tab' href="#users"><strong>USER LIST</strong></a></li>
+      <li class="dropdown">
+        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong>VEHICLES</strong>
+          <span class="caret"></span></a>
+          <ul class="dropdown-menu">
+            <li><a data-toggle='tab' href="#allVehicle">All Vehicles</a></li>
+            <li><a data-toggle='tab' href="#addVehicle">Add Vehicle</a></li>
+            <li><a data-toggle='tab' href="#editVehicle">Edit Vehicle</a></li>
+            <li><a data-toggle='tab' href="#removeVehicle">Remove Vehicle</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a class="dropdown-toggle" data-toggle="dropdown" href="#"><strong>BOOKINGS</strong>
+            <span class="caret"></span></a>
+            <ul class="dropdown-menu">
+              <li><a data-toggle='tab' href="#allbooking">All bookings</a></li>
+              <li><a data-toggle='tab' href="#addBooking">Add Booking</a></li>
+              <li><a data-toggle='tab' href="#editBooking">Edit Booking</a></li>
+              <li><a data-toggle='tab' href="#removeBooking">Remove Booking</a></li>
+            </ul>
+          </li>
+        </ul>
+  </div>
+  <div class="tab-content">
+    <div class="tab-pane fade in active" id="users">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th align='justify'>First Name</th>
+            <th align='justify'>Last Name</th>
+            <th align='justify'>Address</th>
+            <th align='justify'>License No.</th>
+            <th align='justify'>License Expiration</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="allVehicle">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th align='justify'>Plate Number</th>
+            <th align='justify'>Brand</th>
+            <th align='justify'>Year</th>
+            <th align='justify'>Gear</th>
+            <th align='justify'>Seats</th>
+            <th align='justify'>Rental Price</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="addVehicle">
+      <h1>ADD VEHICLE</h1>
+      <form class="col-sm-6" action="" method="post">
+        <div class="form-group">
+          <label for="plateNumber">Vehicle Plate Number:</label>
+          <input type="text" id="plateNumber" class="form-control" name="plateNumber" required>
+          <br>
+          <label for="plateNumber">Vehicle Brand:</label>
+          <input type="text" id="vehicleBrand" class="form-control" name="vehicleBrand" required>
+          <br>
+          <label for="plateNumber">Vehicle Year:</label>
+          <input type="text" id="vehicleYear" class="form-control" name="vehicleYear" required>
+          <br>
+          <label for="plateNumber">Gear:</label>
+          <select class="form-control" id="gear" name="gear">
+            <option>Automatic</option>
+            <option>Manual Stick</option>
+          </select>
+          <br>
+          <label for="plateNumber">Gear:</label>
+          <select class="form-control" id="gear" name="gear">
+            <option>2</option>
+            <option>5</option>
+            <option>7</option>
+          </select>
+        </div>
+        <input type="submit" class="btn btn-primary" value="Retrieve Contacts">
+      </form>
+    </div>
+    <div class="tab-pane fade" id="editVehicle">EDIT VEHICLE</div>
+    <div class="tab-pane fade" id="removeVehicle">REMOVE VEHICLE</div>
+    <div class="tab-pane fade" id="allbooking">
+      <table class="table table-hover">
+        <thead>
+          <tr>
+            <th align='justify'>Booking Id</th>
+            <th align='justify'>Booking Date</th>
+            <th align='justify'>Booking Time</th>
+            <th align='justify'>Car Booked</th>
+            <th align='justify'>Customer Name</th>
+          </tr>
+        </thead>
+      </table>
+    </div>
+    <div class="tab-pane fade" id="addBooking">ADD BOOKING</div>
+    <div class="tab-pane fade" id="editBooking">EDIT BOOKING</div>
+    <div class="tab-pane fade" id="removeBooking">REMOVE BOOKING</div>
+  </div>
