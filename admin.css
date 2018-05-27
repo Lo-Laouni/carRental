@@ -1,0 +1,36 @@
+#editCarForm{
+  clear:left;
+}
+
+#search{
+  clear: left;
+}
+
+#vehicleImg{
+  width: 200px;
+  height: 200px;
+  border: 1 1 1 1;
+  border-style: dotted;
+  border-color: #c9f1fd;
+}
+
+#carImgSection{
+  width: 300px;
+  border: 2 2 2 2;
+  border-color:#ccc;
+  border-style: solid;
+  height: 400px;
+  padding-left: 50px;
+  padding-top: 20px;
+  margin-top: 30px;
+  margin-left: 50px;
+}
+
+#bookingAdd{
+  border:1px;
+  border-style: solid;
+  border-radius: 2px;
+  border-color: #ccc;
+  left: 34%;
+  padding-top: 10px;
+}

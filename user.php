@@ -1,4 +1,5 @@
 <?php
+  require 'dbConnect.php';
   class user {
     $id;
     $firstName='';
@@ -8,6 +9,8 @@
     $dLicenseExpDate;
     $username='';
     $password='';
+    $link = new dbConnect();
+    $connect = $link->connect();
 
     function __construct($id, $firstName,$lastName, $address, $dLicenseNo, $dLicenseExpDate, $username, $password){
       $this->firstName = $firstName;
@@ -22,15 +25,15 @@
 
     function registerUser(){
 
-      $connect = mysqli_connect("localhost","root","","phppot_examples");
+
       $userInsert = "INSERT INTO Users (UserId,username, password, firstName, lastName, address, dLicenseNo, dLicenseExpDate)
       VALUES (this=>$id, this=>$username, this=>$password, this=>$firstName, this=>$lastName, this=>$address, this=>$dLicenseNo, this=>$dLicenseExpDate)";
 
-      if ($connect.query($userInsert) === true){
+      if (mysqli_query($connect, $userInsert)){
         echo "User added Successfully"
       }
       else{
-        echo "Error: " . $userInsert . "<br>" . $connect->error;
+        echo "Error updating record: " . mysqli_error($connect);
       }
       $connect->close();
     }
@@ -38,8 +41,8 @@
     function loginAuth(){
       $message="";
       if(count($_POST)>0) {
-        $conn = mysqli_connect("localhost","root","","phppot_examples");
-        $result = mysqli_query($conn,"SELECT * FROM users WHERE username='" . $_POST["userName"] . "' and password = '". $_POST["password"]."'");
+
+        $result = mysqli_query($connect,"SELECT * FROM users WHERE username='" . $_POST["userName"] . "' and password = '". $_POST["password"]."'");
         $count  = mysqli_num_rows($result);
         $user = mysqli_fetch_array($result);
         if($count==0) {
@@ -57,9 +60,9 @@
     }
 
     function getBookingHist (){
-      $connect = mysqli_connect("localhost","root","","phppot_examples");
+      
       session_start();
-      $result = mysqli_query($conn, "SELECT * FROM bookings WHERE userId='".$_SESSION['id']."'");
+      $result = mysqli_query($connect, "SELECT * FROM bookings WHERE userId='".$_SESSION['id']."'");
       $count = mysqli_num_rows($result);
       if($count==0){
         return 'No Bookings available';

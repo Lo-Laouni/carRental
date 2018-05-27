@@ -4,6 +4,7 @@
   <title>Lexa Rentals</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" type="text/css" href="admin.css">
   <link rel="stylesheet" type="text/css" href="home.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -75,34 +76,85 @@
     </div>
     <div class="tab-pane fade" id="addVehicle">
       <h1>ADD VEHICLE</h1>
-      <form class="col-sm-6" action="" method="post">
+      <form class="col-sm-6" action="addCar.php" method="post" enctype="multipart/form-data">
         <div class="form-group">
           <label for="plateNumber">Vehicle Plate Number:</label>
           <input type="text" id="plateNumber" class="form-control" name="plateNumber" required>
           <br>
-          <label for="plateNumber">Vehicle Brand:</label>
+          <label for="vehicleBrand">Vehicle Brand:</label>
           <input type="text" id="vehicleBrand" class="form-control" name="vehicleBrand" required>
           <br>
-          <label for="plateNumber">Vehicle Year:</label>
+          <label for="vehicleYear">Vehicle Year:</label>
           <input type="text" id="vehicleYear" class="form-control" name="vehicleYear" required>
           <br>
-          <label for="plateNumber">Gear:</label>
-          <select class="form-control" id="gear" name="gear">
+          <label for="gear">Gear:</label>
+          <select class="form-control" id="gear" name="gear" required>
             <option>Automatic</option>
             <option>Manual Stick</option>
           </select>
           <br>
-          <label for="plateNumber">Gear:</label>
-          <select class="form-control" id="gear" name="gear">
+          <label for="seats">Seats:</label>
+          <select class="form-control" id="seats" name="seats" required>
             <option>2</option>
             <option>5</option>
             <option>7</option>
           </select>
+          <br>
+          <label for="fileToUpload">Upload Vehicle Image (200 x 200):</label>
+          <input type="file" name="fileToUpload" id="fileToUpload">
+          <br>
+          <input type="submit" class="btn btn-primary" value="Submit" name="addCarform">
         </div>
-        <input type="submit" class="btn btn-primary" value="Retrieve Contacts">
       </form>
     </div>
-    <div class="tab-pane fade" id="editVehicle">EDIT VEHICLE</div>
+    <div class="tab-pane fade" id="editVehicle">
+      <h1 align='center'>EDIT VEHICLE</h1>
+      <div class="col-sm-12" id="search">
+        <form class="navbar-form navbar-right">
+          <div class="form-group">
+            <input type="text" class="form-control" placeholder="Search Vehicle">
+            <button class="btn btn-default" type="button" id="searchButton">
+              <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+            </button>
+          </div>
+        </form>
+        <button class = 'btn btn-primary' type="button" id="editButton" disabled>Edit Vehicle</button>
+      </div>
+      <form class="col-sm-6" action="" method="post" enctype="multipart/form-data" id="editCarForm">
+        <div class="form-group">
+          <label for="plateNumber">Vehicle Plate Number:</label>
+          <input type="text" id="plateNumber" class="form-control" name="plateNumber" disabled>
+          <br>
+          <label for="vehicleBrand">Vehicle Brand:</label>
+          <input type="text" id="vehicleBrand" class="form-control" name="vehicleBrand" disabled>
+          <br>
+          <label for="vehicleYear">Vehicle Year:</label>
+          <input type="text" id="vehicleYear" class="form-control" name="vehicleYear" disabled>
+          <br>
+          <label for="gear">Gear:</label>
+          <select class="form-control" id="gear" name="gear" disabled>
+            <option>Automatic</option>
+            <option>Manual Stick</option>
+          </select>
+          <br>
+          <label for="seats">Gear:</label>
+          <select class="form-control" id="seats" name="seats" disabled>
+            <option>2</option>
+            <option>5</option>
+            <option>7</option>
+          </select>
+          <br>
+          <label for="fileToUpload">Change Vehicle Image (200 x 200):</label>
+          <input type="file" name="fileToUpload" id="fileToUpload">
+          <br>
+          <input type="submit" class="btn btn-primary" value="Save Changes" name="editCarform">
+        </div>
+      </form>
+      <div class="col-sm-6" id="carImgSection">
+        <h3>Vehicle Image:</h3>
+        <div id="vehicleImg"></div>
+      </div>
+    </div>
     <div class="tab-pane fade" id="removeVehicle">REMOVE VEHICLE</div>
     <div class="tab-pane fade" id="allbooking">
       <table class="table table-hover">
@@ -117,7 +169,74 @@
         </thead>
       </table>
     </div>
-    <div class="tab-pane fade" id="addBooking">ADD BOOKING</div>
-    <div class="tab-pane fade" id="editBooking">EDIT BOOKING</div>
+    <div class="tab-pane fade" id="addBooking">
+      <h3 align='center'>Add Booking</h3>
+      <div class="col-sm-4" id="bookingAdd">
+        <form class="" method="post" action="">
+          <div class="form-group">
+            Ref Number : <input type="text" name="booking_id" class="form-control" disabled>
+            <br>
+            <label for="booking_date">Booking for (Date):</label>
+            <input type="date" class="form-control" name="booking_date" required>
+            <br>
+            <label for="booking_time">Booking for (Date):</label>
+            <input type="time" class="form-control" name="booking_time" required>
+            <br>
+            <label for="booked_car">Booked Vehicle: </label>
+            <input type="text" class="form-control" name="booked_car" required>
+            <br>
+            <label for="booked_customer">Customer: </label>
+            <input type="text" class="form-control" name="booked_customer" required>
+            <br>
+            <div align='center'>
+              <input type="submit" class="btn btn-primary" value="Add Booking" name="add_booking">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
+    <div class="tab-pane fade" id="editBooking">
+      <h3 align='center'>EDIT BOOKING</h3>
+      <form class="navbar-form navbar-right">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search Booking">
+          <button class="btn btn-default" type="button" id="searchBooking_btn">
+            <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
+          </button>
+        </div>
+      </form>
+      <div class="col-sm-4" id="bookingAdd">
+        <div align='right'>
+          <button type="button" class="btn btn-primary" name="edit_booking" disabled>Edit Booking</button>
+        </div>
+        <form class="" method="post" action="">
+          <div class="form-group">
+            Ref Number : <input type="text" name="booking_id" class="form-control" disabled>
+            <br>
+            <label for="booking_date">Booking for (Date):</label>
+            <input type="date" class="form-control" name="edit_booking_date" disabled>
+            <br>
+            <label for="booking_time">Booking for (Date):</label>
+            <input type="time" class="form-control" name="edit_booking_time" disabled>
+            <br>
+            <label for="booked_car">Booked Vehicle: </label>
+            <input type="text" class="form-control" name="edit_booked_car" disabled>
+            <br>
+            <label for="booked_customer">Customer: </label>
+            <input type="text" class="form-control" name="edit_booked_customer" disabled>
+            <br>
+            <div align='center'>
+              <input type="submit" class="btn btn-primary" value="save changes" name="edit_booking-btn">
+            </div>
+          </div>
+        </form>
+      </div>
+    </div>
     <div class="tab-pane fade" id="removeBooking">REMOVE BOOKING</div>
   </div>
+  <script>
+
+  document.getElementById('searchButton').onclick = function()  {
+    document.getElementById('editButton').disabled = false;
+  }
+  </script>

@@ -1,13 +1,8 @@
 <<?php
-class dbConnect(){
-  protected $link;
-  public $db_Name='';
-  public $db_user='';
-  public $db_pass='';
-  public $db_host='';
+class dbConnect {
+  public $link;
 
-  function connect(){
-    $this->link = mysqli_connect($db_host,$db_user,$db_pass, $db_Name);
-    return $this->link;
+  public function __construct(){
+    $this->link = mysqli_connect('localhost','root','luxmdm','crental');
   }
 } ?>
