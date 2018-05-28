@@ -1,5 +1,5 @@
 <?php
-require 'dbConnect.php';
+require_once 'dbconnect.php';
 class vehicle {
   public $id ='';
   public $brand = '';
@@ -9,7 +9,7 @@ class vehicle {
   public $seats='';
 
   public function newVehicle($id, $brand,$year,$gear,$seats){
-    $connect = new dbConnect();
+    $connect = new dbconnect();
 
     $this->id=$id;
     $this->brand = $brand;
@@ -24,7 +24,7 @@ class vehicle {
     return mysqli_affected_rows($connect->link);
   }
   function getCarDetails(){
-    $connect = new dbConnect();
+    $connect = new dbconnect();
 
     $result = mysqli_query($connect, "SELECT * FROM vehicles");
     $count=mysqli_num_rows($result);
@@ -33,14 +33,14 @@ class vehicle {
   }
 
   function editVehicle($vehicleId,$field,$newdata){
-    $connect = new dbConnect();
+    $connect = new dbconnect();
 
     $sql = "UPDATE vehicles SET ".$field."=".$newdata." WHERE id=".$vehicleId;
     return mysqli_affected_rows(mysqli_query($connect, $sql));
   }
 
   function removeCar($id){
-    $connect = new dbConnect();
+    $connect = new dbconnect();
 
     $query = "DELETE FROM vehicles WHERE id='".$id."'";
     $deleteCar = mysqli_query($connect,$query);

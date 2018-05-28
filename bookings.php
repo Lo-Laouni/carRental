@@ -1,5 +1,5 @@
 <?php
-require 'dbConnect.php';
+require_once 'dbconnect.php';
 
 class bookings {
   $bookingId ='';
@@ -8,7 +8,7 @@ class bookings {
   $bookedCar='';
   $bookedUser='';
   $bookingStatus;
-  $link = new dbConnect();
+  $link = new dbconnect();
   $connect = $link->connect();
 
   function getBookings(){
