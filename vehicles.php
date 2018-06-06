@@ -23,7 +23,8 @@ class vehicle {
 
     return mysqli_affected_rows($connect->link);
   }
-  function getCarDetails(){
+
+  public function getCarDetails(){
     $connect = new dbconnect();
 
     $result = mysqli_query($connect, "SELECT * FROM vehicles");
@@ -32,14 +33,25 @@ class vehicle {
     return $cars;
   }
 
-  function editVehicle($vehicleId,$field,$newdata){
+  public function getCarbyID($id){
     $connect = new dbconnect();
 
-    $sql = "UPDATE vehicles SET ".$field."=".$newdata." WHERE id=".$vehicleId;
-    return mysqli_affected_rows(mysqli_query($connect, $sql));
+    $query = "SELECT * FROM vehicle WHERE v_id='".$id."'";
+    $queryRun = mysqli_query($connect->link,$query);
+    $queryResults = mysqli_fetch_assoc($queryRun);
+
+    return $queryResults;
   }
 
-  function removeCar($id){
+  public function editVehicle($id, $brand,$year,$gear,$seats){
+    $connect = new dbconnect();
+
+    $sql = "UPDATE `vehicle` SET `v_brand`='".$brand."' , `v_year`='".$year."' ,`v_gear` ='".$gear."' ,v_seats ='".$seats."'
+    WHERE `v_id`='".$id."'";
+    return mysqli_affected_rows(mysqli_query($connect->link, $sql));
+  }
+
+  public function removeCar($id){
     $connect = new dbconnect();
 
     $query = "DELETE FROM vehicles WHERE id='".$id."'";

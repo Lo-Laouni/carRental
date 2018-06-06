@@ -1,7 +1,7 @@
 <?php
   require_once 'dbconnect.php';
   class user {
-    public $id;
+    public $id='';
     public $fname='';
     public $lname='';
     public $address='';
@@ -27,27 +27,20 @@
 
       return mysqli_affected_rows($connect->link);
     }
-/*
-    function registerUser(){
 
+    public function getAllUsers(){     //INCOMPLETE FUNCTION 
+      $connect = new dbconnect();
 
-      $userInsert = "INSERT INTO Users (UserId,username, password, firstName, lastName, address, dLicenseNo, dLicenseExpDate)
-      VALUES (this=>$id, this=>$username, this=>$password, this=>$firstName, this=>$lastName, this=>$address, this=>$dLicenseNo, this=>$dLicenseExpDate)";
-
-      if (mysqli_query($connect, $userInsert)){
-        echo "User added Successfully";
-      }
-      else{
-        echo "Error updating record: " . mysqli_error($connect);
-      }
-      $connect->close();
+      $query = "SELECT * FROM user"
+      $queryResults = mysqli_query($connect->link, $query);
     }
-*/
+
     public function loginAuth($username,$password){
+      $connect = new dbconnect();
+
       $message="";
-
-
-      $result = mysqli_query($connect->link,"SELECT * FROM user WHERE user_uname='" . $username . "' and user_pwd = '". $password."'");
+      $query = "SELECT * FROM user WHERE user_uname='" . $username . "' and user_pwd = '". $password."'";
+      $result = mysqli_query($connect->link,$query);
       $count  = mysqli_affected_rows($connect->link);
       $user = mysqli_fetch_array($result);
       if($count==0) {
@@ -57,10 +50,6 @@
         session_start();
         $_SESSION['id'] = $user['user_id'];
       }
-
-      $result->close();
-      $conn->close();
-
       return $message;
     }
 

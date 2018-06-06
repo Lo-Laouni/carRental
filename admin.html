@@ -7,6 +7,7 @@
   <link rel="stylesheet" type="text/css" href="admin.css">
   <link rel="stylesheet" type="text/css" href="home.css">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <script src="jsMain.js" type="text/javascript"></script>
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 </head>
@@ -58,6 +59,9 @@
             <th align='justify'>License Expiration</th>
           </tr>
         </thead>
+        <tbody>
+          <!-- INCOMPLETE TABLE-->
+        </tbody>
       </table>
     </div>
     <div class="tab-pane fade" id="allVehicle">
@@ -112,40 +116,40 @@
       <div class="col-sm-12" id="search">
         <form class="navbar-form navbar-right">
           <div class="form-group">
-            <input type="text" class="form-control" placeholder="Search Vehicle">
-            <button class="btn btn-default" type="button" id="searchButton">
+            <input type="text" class="form-control" placeholder="Search Vehicle" name="carID" id="carID">
+              <button class="btn btn-default" type="button" id="searchButton" name="searchButton" onclick="showV()">
               <span class="glyphicon glyphicon-search" aria-hidden="true"></span>
             </button>
           </div>
         </form>
-        <button class = 'btn btn-primary' type="button" id="editButton" disabled>Edit Vehicle</button>
+        <button class = 'btn btn-primary' type="button" id="editButton" onclick="enable_form()" disabled>Edit Vehicle</button>
       </div>
-      <form class="col-sm-6" action="" method="post" enctype="multipart/form-data" id="editCarForm">
+      <form class="col-sm-6" method="post" enctype="multipart/form-data" id="editCarForm">
         <div class="form-group">
           <label for="plateNumber">Vehicle Plate Number:</label>
-          <input type="text" id="plateNumber" class="form-control" name="plateNumber" disabled>
+          <input type="text" id="edit_plateNumber" class="form-control" name="edit_plateNumber" disabled>
           <br>
           <label for="vehicleBrand">Vehicle Brand:</label>
-          <input type="text" id="vehicleBrand" class="form-control" name="vehicleBrand" disabled>
+          <input type="text" id="edit_vehicleBrand" class="form-control" name="edit_vehicleBrand" disabled>
           <br>
           <label for="vehicleYear">Vehicle Year:</label>
-          <input type="text" id="vehicleYear" class="form-control" name="vehicleYear" disabled>
+          <input type="text" id="edit_vehicleYear" class="form-control" name="edit_vehicleYear" disabled>
           <br>
           <label for="gear">Gear:</label>
-          <select class="form-control" id="gear" name="gear" disabled>
+          <select class="form-control" id="edit_gear" name="edit_gear" disabled>
             <option>Automatic</option>
             <option>Manual Stick</option>
           </select>
           <br>
-          <label for="seats">Gear:</label>
-          <select class="form-control" id="seats" name="seats" disabled>
+          <label for="seats">seats:</label>
+          <select class="form-control" id="edit_seats" name="edit_seats" disabled>
             <option>2</option>
             <option>5</option>
             <option>7</option>
           </select>
           <br>
           <label for="fileToUpload">Change Vehicle Image (200 x 200):</label>
-          <input type="file" name="fileToUpload" id="fileToUpload">
+          <input type="file" name="fileToUpload" id="fileToUpload" disabled>
           <br>
           <input type="submit" class="btn btn-primary" value="Save Changes" name="editCarform">
         </div>
@@ -234,9 +238,5 @@
     </div>
     <div class="tab-pane fade" id="removeBooking">REMOVE BOOKING</div>
   </div>
-  <script>
-
-  document.getElementById('searchButton').onclick = function()  {
-    document.getElementById('editButton').disabled = false;
-  }
-  </script>
+</body>
+</html>
